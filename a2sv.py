@@ -10,7 +10,7 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
-from PIL import Image, ImageDraw, ImageFont
+# from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 
 # Bot token can be obtained via https://t.me/BotFather
@@ -32,35 +32,35 @@ async def fetch_Quote(bot: Bot):
     
 
 
-async def fetch_Image():
+# async def fetch_Image():
         
-    url = "https://quotes.rest/qod?language=en"
+#     url = "https://quotes.rest/qod?language=en"
 
-    # Define headers (if needed)
-    headers = {
-        "accept": "application/json",
-        "Authorization": "Bearer XAHHYHPNs2ZE2rZQnHpOz4Jq5CKVirtuQEx8vi3m"
-    }
+#     # Define headers (if needed)
+#     headers = {
+#         "accept": "application/json",
+#         "Authorization": "Bearer XAHHYHPNs2ZE2rZQnHpOz4Jq5CKVirtuQEx8vi3m"
+#     }
 
-    # Send GET request
-    response = requests.get(url, headers=headers)
+#     # Send GET request
+#     response = requests.get(url, headers=headers)
 
-    # Check if request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse JSON response
-        data = response.json()
-        # Extract image URL
-        image_url = data['contents']['quotes'][0]['background']
+#     # Check if request was successful (status code 200)
+#     if response.status_code == 200:
+#         # Parse JSON response
+#         data = response.json()
+#         # Extract image URL
+#         image_url = data['contents']['quotes'][0]['background']
         
-        # Now you have the image URL, you can use it as needed
-        return image_url
+#         # Now you have the image URL, you can use it as needed
+#         return image_url
 
-        # Perform further actions such as downloading the image or overlaying text on it
-    else:
-        print("Error:", response.status_code)
-        return ''
+#         # Perform further actions such as downloading the image or overlaying text on it
+#     else:
+#         print("Error:", response.status_code)
+#         return ''
 
-async def overlay_text_on_image(image_url, text,bot ):
+# async def overlay_text_on_image(image_url, text,bot ):
     # Load the image from URL
     response = requests.get(image_url)
     my_image = Image.open(BytesIO(response.content))
