@@ -3,9 +3,8 @@ import logging
 import sys
 import requests
 import io
-from aiogram.types import InputFile
 
-from aiogram import Bot, Dispatcher, Router, types
+from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
@@ -19,7 +18,7 @@ TOKEN = "6834075119:AAGK8MOU0AV2coWz61rFwasipeSf2R2NfSI"
 # All handlers should be attached to the Router (or Dispatcher)
 dp = Dispatcher()
 
-async def fetch_Quote(bot: Bot):
+async def send_Quote(bot: Bot):
     
     response =  requests.get('https://zenquotes.io/api/today')
     val = response.json()
@@ -158,12 +157,10 @@ async def main() -> None:
     
     
     
-    while True:
-        await fetch_Quote(bot)
-        await asyncio.sleep(86400)  # 24 hours    
+    # while True:
+    await send_Quote(bot)
+        # await asyncio.sleep(86400)  # 24 hours    
     
-    
-
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
